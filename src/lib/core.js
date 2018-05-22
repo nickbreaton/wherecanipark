@@ -1,12 +1,12 @@
-import moment from 'moment'
-
 const HOUR_OF_8_AM = 8
 const HOUR_OF_5_PM = 17
 
 const isSunday = (timestamp) => timestamp.format('dddd') === 'Sunday'
 const isEvenDate = (timestamp) => timestamp.date() % 2 === 0
 const isOddDate = (timestamp) => !isEvenDate(timestamp)
-const isOutsideTimeRestriction = (timestamp) => timestamp.hour() < HOUR_OF_8_AM || timestamp.hour() >= HOUR_OF_5_PM
+const isOutsideTimeRestriction = (timestamp) => {
+  return timestamp.hour() < HOUR_OF_8_AM || timestamp.hour() >= HOUR_OF_5_PM
+}
 
 export const canPark = (timestamp, isEvenSide) => {
   return (
@@ -15,6 +15,17 @@ export const canPark = (timestamp, isEvenSide) => {
     || (isEvenSide && isEvenDate(timestamp))
     || (!isEvenSide && isOddDate(timestamp))
   )
+}
+
+export const timeBetween = (one, two) => {
+  // TODO: handle time until
+  const hours = Math.abs(one.diff(two, 'hours'))
+  const minutes = Math.abs(one.diff(two, 'minutes'))
+  if (hours >= 1) {
+    return `${hours} hours`
+  } else {
+    return `${minutes} minutes`
+  }
 }
 
 export const canParkUntil = (timestamp, isEvenSide) => {

@@ -1,5 +1,8 @@
 import React from 'react'
+import { Background } from './Background'
 
 export const App = () => (
-  <h1>hello again</h1>
+  <Background>
+    
+  </Background>
 )
