@@ -4,7 +4,7 @@ import React from 'react'
 
 export const App = () => (
   <Background>
-    <Side title='My Side' isEven={false} />
-    <Side title='Other Side' isEven={true} />
+    <Side title='My Side' />
+    <Side title='Other Side' isEven />
   </Background>
 )
