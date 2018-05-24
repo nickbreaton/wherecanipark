@@ -15,13 +15,13 @@ injectGlobal({
 injectGlobal`
   @font-face {
     font-family: 'Custom';
-    src: url(/fonts/ibm-plex/IBMPlexSans-Light.otf);
+    src: url(/fonts/lato/Lato-Light.ttf);
     font-weight: 400;
     font-style: normal;
   }
   @font-face {
     font-family: 'Custom';
-    src: url(/fonts/ibm-plex/IBMPlexSans-SemiBold.otf);
+    src: url(/fonts/lato/Lato-Bold.ttf);
     font-weight: 700;
     font-style: normal;
   }
@@ -90,7 +90,9 @@ const statusTextStyle = css(timeStyle, {
 const statusCircleStyle = css({
   width: '1.5rem',
   height: '1.5rem',
-  borderRadius: '100%'
+  borderRadius: '100%',
+  backgroundPosition: 'center center',
+  backgroundRepeat: 'no-repeat',
 })
 
 const GREEN = '#2ECC71'
@@ -98,9 +100,9 @@ const RED = '#C0392B'
 
 const Status = ({ title, time, status }) => {
   const statusOptions = ({
-    BEST: { color: GREEN, text: 'Best Option' },
-    AVAILABLE: { color: GREEN, text: 'Available' },
-    UNAVAILABLE: { color: RED, text: 'Unavailable' }
+    BEST: { color: GREEN, text: 'Best Option', image: 'icons/check.svg' },
+    AVAILABLE: { color: GREEN, text: 'Available', image: 'icons/check.svg' },
+    UNAVAILABLE: { color: RED, text: 'Unavailable', image: 'icons/x.svg' }
   })
   const computed = statusOptions[status]
   return (
@@ -111,9 +113,9 @@ const Status = ({ title, time, status }) => {
         <span className={statusTextStyle} style={{ color: computed.color }}>
           {computed.text}
         </span>
-        <span className={statusCircleStyle} style={{ backgroundColor: computed.color }}>
-          {/*  */}
-        </span>
+        <span
+          className={statusCircleStyle}
+          style={{ backgroundColor: computed.color, backgroundImage: `url(${computed.image})` }} />
       </div>
     </section>
   )
@@ -132,7 +134,7 @@ class Side extends React.Component {
     this.setState({ now: Date.now() })
   }
   get now() {
-    return moment(new Date(this.state.now)).add(-6, 'hours')
+    return moment(new Date(this.state.now)).add(-8, 'hours')
   }
   render() {
     if (this.now && this.now.isValid()) {
