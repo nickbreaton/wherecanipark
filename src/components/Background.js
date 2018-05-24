@@ -1,35 +1,7 @@
 import React from 'react'
-import { injectGlobal, css } from 'emotion'
+import { css } from 'emotion'
 import { getStatus, formatDuration } from '../lib/core'
 import moment from 'moment'
-
-injectGlobal({
-  '*': {
-    boxSizing: 'border-box',
-    margin: 0,
-    padding: 0,
-    fontFamily: 'Custom'
-  }
-})
-
-injectGlobal`
-  @font-face {
-    font-family: 'Custom';
-    src: url(/fonts/ibm-plex/IBMPlexSans-Light.otf);
-    font-weight: 400;
-    font-style: normal;
-  }
-  @font-face {
-    font-family: 'Custom';
-    src: url(/fonts/ibm-plex/IBMPlexSans-SemiBold.otf);
-    font-weight: 700;
-    font-style: normal;
-  }
-  html {
-    overflow: hidden;
-  }
-`
-
 
 const containerStyle = css({
   minHeight: '100vh',
@@ -134,7 +106,7 @@ class Side extends React.Component {
     this.setState({ now: Date.now() })
   }
   get now() {
-    return moment(new Date(this.state.now)).add(-8, 'hours')
+    return moment(new Date(this.state.now))
   }
   render() {
     if (this.now && this.now.isValid()) {
