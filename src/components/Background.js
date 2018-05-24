@@ -1,6 +1,6 @@
 import React from 'react'
-import { css, injectGlobal } from 'emotion'
-import { canParkUntil, timeBetween } from '../lib/core'
+import { injectGlobal, css } from 'emotion'
+import { getStatus, formatDuration } from '../lib/core'
 import moment from 'moment'
 
 injectGlobal({
@@ -8,9 +8,28 @@ injectGlobal({
     boxSizing: 'border-box',
     margin: 0,
     padding: 0,
-    fontFamily: 'Avenir Next'
+    fontFamily: 'Custom'
   }
 })
+
+injectGlobal`
+  @font-face {
+    font-family: 'Custom';
+    src: url(/fonts/ibm-plex/IBMPlexSans-Light.otf);
+    font-weight: 400;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: 'Custom';
+    src: url(/fonts/ibm-plex/IBMPlexSans-SemiBold.otf);
+    font-weight: 700;
+    font-style: normal;
+  }
+  html {
+    overflow: hidden;
+  }
+`
+
 
 const containerStyle = css({
   minHeight: '100vh',
@@ -60,8 +79,7 @@ const timeStyle = css(titleStyle, {
 })
 
 const statusStyle = css({
-  display: 'flex',
-
+  display: 'flex'
 })
 
 const statusTextStyle = css(timeStyle, {
@@ -114,36 +132,19 @@ class Side extends React.Component {
     this.setState({ now: Date.now() })
   }
   get now() {
-    return moment(this.state.now ? new Date(this.state.now) : new Date())
-  }
-  get canParkUntil() {
-    return canParkUntil(this.now, this.props.isEven)
-  }
-  get otherCanParkUntil() {
-    return canParkUntil(this.now, !this.props.isEven)
-  }
-  get time() {
-    return timeBetween(this.now, this.canParkUntil) + ' remaining'
-  }
-  get status() {
-    if (this.canParkUntil === null) {
-      return 'UNAVAILABLE'
-    }
-
-    if (this.otherCanParkUntil !== null && this.otherCanParkUntil.isBefore(this.canParkUntil)) {
-      return 'BEST'
-    }
-
-    return 'AVAILABLE'
+    return moment(new Date(this.state.now)).add(-6, 'hours')
   }
   render() {
-    return (
-      <Status
-        title={this.props.title}
-        status={this.status}
-        time={this.time}
-      />
-    )
+    if (this.now && this.now.isValid()) {
+      return (
+        <Status
+          title={this.props.title}
+          status={getStatus(this.now, this.props.isEven)}
+          time={formatDuration(this.now, this.props.isEven)}
+        />
+      )
+    }
+    return null
   }
 }
 
