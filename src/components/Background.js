@@ -60,7 +60,7 @@ const headingsStyle = css({
 const cardStyle = css({
   background: 'white',
   borderRadius: '3px',
-  boxShadow: '0 0 0.5rem 0 rgba(0,0,0,0.25)',
+  boxShadow: '1px 1px 0.5rem 0 rgba(0,0,0,0.5)',
   padding: '1rem',
   marginBottom: '1rem'
 })
