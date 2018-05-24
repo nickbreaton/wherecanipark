@@ -1,10 +1,15 @@
 import { Background } from './Background'
+import { ScrollLock } from './ScrollLock'
 import { Side } from './Side'
 import React from 'react'
 
-export const App = () => (
-  <Background>
-    <Side title='My Side' />
-    <Side title='Other Side' isEven />
-  </Background>
+const App = () => (
+  <ScrollLock>
+    <Background>
+      <Side title='My Side' />
+      <Side title='Other Side' isEven />
+    </Background>
+  </ScrollLock>
 )
+
+export { App }

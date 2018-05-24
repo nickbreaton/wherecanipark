@@ -1,9 +1,9 @@
 import { getStatus, formatDuration } from '../lib/core'
 import { Status } from './Status'
 import moment from 'moment'
-import React from 'react'
+import React, { Component } from 'react'
 
-class Side extends React.Component {
+class Side extends Component {
   state = {}
   componentDidMount() {
     this.setNow()
