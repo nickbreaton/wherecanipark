@@ -15,13 +15,13 @@ injectGlobal({
 injectGlobal`
   @font-face {
     font-family: 'Custom';
-    src: url(/fonts/lato/Lato-Light.ttf);
+    src: url(/fonts/ibm-plex/IBMPlexSans-Light.otf);
     font-weight: 400;
     font-style: normal;
   }
   @font-face {
     font-family: 'Custom';
-    src: url(/fonts/lato/Lato-Bold.ttf);
+    src: url(/fonts/ibm-plex/IBMPlexSans-SemiBold.otf);
     font-weight: 700;
     font-style: normal;
   }
