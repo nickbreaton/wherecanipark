@@ -1,6 +1,6 @@
 # Where Can I Park?
 
-A progress web app built to assist in street parking in Iowa City, IA.
+A progressive web app built to assist in street parking in Iowa City, IA.
 
 ## The Problem
 
