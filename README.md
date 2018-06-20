@@ -4,7 +4,7 @@ A progress web app built to assist in street parking in Iowa City, IA.
 
 ## The Problem
 
-The rules surrounding parking on some streets in Iowa City, IA is difficult for residents to determine the optimal side to park on.
+The rules surrounding parking on some streets in Iowa City, IA is difficult for certain residents to determine the optimal side to park on each night.
 
 <figure>
   <p align="center">
@@ -33,3 +33,7 @@ An offline first, progressive web app to calculate the optimal place to park at 
     </p>
   </figcaption>
 </figure>
+
+## Credits
+
+[Background image](./public/background.jpg) provided by [Wikipedia](https://en.wikipedia.org/wiki/Iowa_Old_Capitol_Building#/media/File:Old_Capitol_Iowa_City.jpg) under [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/).
