@@ -4,7 +4,7 @@ A progressive web app built to assist in street parking in Iowa City, IA.
 
 ## The Problem
 
-The rules surrounding parking on some streets in Iowa City, IA is difficult for certain residents to determine the optimal side to park on each night.
+The rules surrounding parking on some streets in Iowa City, IA are difficult for certain residents to determine the optimal side to park on each night.
 
 <figure>
   <p align="center">
